@@ -10,29 +10,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+@Entity
+@Table(name = "comuna")
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "usuarios")
-public class Usuario {
+@Data
+public class Comuna {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nombreUsuario", length = 30, nullable = false)
+    @Column(nullable = false, length = 40)
     private String nombre;
-
-    @Column(name = "email", length = 50, nullable = false, unique = true)
-    private String email;
-
-    @Column(name = "contraseña", length = 30, nullable = false)
-    private String password;
-
-    @Column(name = "tipoMembresia", length = 20)
-    private String tipoMembresia; // STANDARD o VIP
-
-    @Column(name = "activo")
-    private Boolean activo = true;
+    
 }

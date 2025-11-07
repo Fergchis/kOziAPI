@@ -1,6 +1,11 @@
 package com.kozi.koziAPI.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,9 +21,9 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nombreCategoria", length = 100, nullable = false)
+    @Column(name = "nombreCategoria", length = 20, nullable = false)
     private String nombre;
 
-    @Column(name = "descripcion", length = 255)
+    @Column(name = "descripcion", length = 200)
     private String descripcion;
 }

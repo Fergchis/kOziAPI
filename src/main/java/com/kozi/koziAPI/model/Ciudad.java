@@ -10,26 +10,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "productos")
-public class Producto {
-
+@Table(name = "ciudad")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Ciudad {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nombreProducto", length = 30, nullable = false)
+    @Column(nullable = false, length = 40)
     private String nombre;
-
-    @Column(name = "precio", nullable = false)
-    private Double precio;
-
-    @Column(name = "imagenUrl", length = 100)
-    private String imagenUrl;
-
-    @Column(name = "stock", nullable = false)
-    private Integer stock;
 }
