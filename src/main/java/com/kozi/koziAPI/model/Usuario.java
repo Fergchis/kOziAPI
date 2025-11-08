@@ -1,5 +1,7 @@
 package com.kozi.koziAPI.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,14 +23,15 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nombreUsuario", length = 30, nullable = false)
-    private String nombre;
+    @Column(name = "nombreUsuario", length = 50, nullable = false)
+    private String nombreUsuario;
 
     @Column(name = "email", length = 50, nullable = false, unique = true)
     private String email;
 
-    @Column(name = "contraseña", length = 30, nullable = false)
-    private String password;
+    @Column(name = "contraseña", length = 50, nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String contraseña;
 
     @Column(name = "tipoMembresia", length = 20)
     private String tipoMembresia; // STANDARD o VIP

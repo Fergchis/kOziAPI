@@ -1,8 +1,5 @@
 package com.kozi.koziAPI.model;
 
-import java.time.LocalDateTime;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,19 +10,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "boleta")
+@Table(name = "materiales")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Boleta {
+public class Materiales {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(nullable = false)
-    private LocalDateTime fechaEmision;
-
-    @Column(nullable = false, length = 7)
-    private Double total;
 }

@@ -23,5 +23,4 @@ public class Comuna {
 
     @Column(nullable = false, length = 40)
     private String nombre;
-    
 }

@@ -22,5 +22,5 @@ public class Rol {
     private Integer id;
 
     @Column(name = "nombreRol", length = 30, nullable = false)
-    private String nombre;
+    private String nombreRol;
 }
