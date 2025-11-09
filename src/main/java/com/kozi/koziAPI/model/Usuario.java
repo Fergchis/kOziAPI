@@ -7,7 +7,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table; 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,19 +25,23 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nombreUsuario", length = 50, nullable = false)
+    @Column(length = 50, nullable = false)
     private String nombreUsuario;
 
-    @Column(name = "email", length = 50, nullable = false, unique = true)
+    @Column(length = 50, nullable = false, unique = true)
     private String email;
 
-    @Column(name = "contraseña", length = 50, nullable = false)
+    @Column(length = 50, nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String contraseña;
 
-    @Column(name = "tipoMembresia", length = 20)
+    @Column(length = 20, nullable = false)
     private String tipoMembresia; // STANDARD o VIP
 
-    @Column(name = "activo")
+    @Column(nullable = false)
     private Boolean activo = true;
+
+    @ManyToOne
+    @JoinColumn(name = "rol", nullable = false)
+    private Rol rol;
 }

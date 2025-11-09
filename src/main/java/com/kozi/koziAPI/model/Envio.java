@@ -1,5 +1,6 @@
 package com.kozi.koziAPI.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,4 +20,7 @@ public class Envio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(length = 20, nullable = false)
+    private String metodoEnvio; //chilexpress, correoschile, idkmen
 }

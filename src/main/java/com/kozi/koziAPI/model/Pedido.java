@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,9 +28,22 @@ public class Pedido {
     @Column(nullable = false)
     private LocalDateTime fechaCreacion;
     
-    @Column(nullable = false, length = 10)
-    private String estado;
-
     @Column(nullable = false, length = 7)
     private Double total;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario", nullable = false)
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "estado", nullable = false)
+    private Estado estado;
+
+    @ManyToOne
+    @JoinColumn(name = "envio", nullable = false)
+    private Envio envio;
+
+    @ManyToOne
+    @JoinColumn(name = "pago", nullable = false)
+    private Pago pago;
 }
