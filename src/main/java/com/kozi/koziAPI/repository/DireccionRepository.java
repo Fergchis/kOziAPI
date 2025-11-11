@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kozi.koziAPI.model.Direccion;
 
 @Repository
-public interface DireccionRepository extends JpaRepository<Direccion, Integer>{
+public interface DireccionRepository extends JpaRepository<Direccion, Long>{
     
 }

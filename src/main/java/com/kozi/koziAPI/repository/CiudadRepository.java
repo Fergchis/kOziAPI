@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kozi.koziAPI.model.Ciudad;
 
 @Repository
-public interface CiudadRepository extends JpaRepository<Ciudad, Integer> {
+public interface CiudadRepository extends JpaRepository<Ciudad, Long> {
 
 }

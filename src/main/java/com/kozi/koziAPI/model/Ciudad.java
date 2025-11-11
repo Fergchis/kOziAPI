@@ -21,7 +21,7 @@ public class Ciudad {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false, length = 40)
     private String nombre;

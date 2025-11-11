@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kozi.koziAPI.model.Estilo;
 
 @Repository
-public interface EstiloRepository extends JpaRepository<Estilo, Integer>{
+public interface EstiloRepository extends JpaRepository<Estilo, Long>{
     
 }

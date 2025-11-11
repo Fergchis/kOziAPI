@@ -20,7 +20,7 @@ public class Colores {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "producto", nullable = false)

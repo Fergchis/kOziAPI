@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kozi.koziAPI.model.ProductosPedido;
 
 @Repository
-public interface ProductosPedidoRepository extends JpaRepository<ProductosPedido, Integer>{
+public interface ProductosPedidoRepository extends JpaRepository<ProductosPedido, Long>{
     
 }

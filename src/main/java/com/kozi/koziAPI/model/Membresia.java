@@ -10,17 +10,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "region")
+@Data
+@Table(name = "membresia")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class Region {
+@Entity
+public class Membresia {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 40)
-    private String nombre;
+    @Column(nullable = false, length = 30)
+    private String tipoMembresia;
 }

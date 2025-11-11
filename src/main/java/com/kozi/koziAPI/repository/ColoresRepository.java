@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kozi.koziAPI.model.Colores;
 
 @Repository
-public interface ColoresRepository extends JpaRepository<Colores, Integer>{
+public interface ColoresRepository extends JpaRepository<Colores, Long>{
     
 }

@@ -11,15 +11,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Table(name = "roles")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "roles")
 public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(length = 30, nullable = false)
     private String nombreRol;

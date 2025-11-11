@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kozi.koziAPI.model.Region;
 
 @Repository
-public interface RegionRepository extends JpaRepository<Region, Integer>{
+public interface RegionRepository extends JpaRepository<Region, Long>{
 
 } 

@@ -1,6 +1,12 @@
 package com.kozi.koziAPI.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.kozi.koziAPI.model.Producto;
+import com.kozi.koziAPI.repository.ProductoRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -9,4 +15,46 @@ import jakarta.transaction.Transactional;
 @SuppressWarnings("null")
 public class ProductoService {
     
+    @Autowired
+    private ProductoRepository productoRepository;
+
+    public List<Producto> findAll() {
+        return productoRepository.findAll();
+    }
+
+    public Producto findById(Long id) {
+        Producto producto = productoRepository.findById(id).orElse(null);
+        return producto;
+    }
+
+    public Producto save(Producto producto) {
+        return productoRepository.save(producto);
+    }
+
+    public Producto patchProducto(Producto producto) {
+        Producto existingProducto = productoRepository.findById(producto.getId()).orElse(null);
+        if (existingProducto != null) {
+            if (producto.getNombre() != null) {
+                existingProducto.setNombre(producto.getNombre());
+            }
+            if (producto.getPrecio() != null) {
+                existingProducto.setPrecio(producto.getPrecio());
+            }
+            if (producto.getImagenUrl() != null) {
+                existingProducto.setImagenUrl(producto.getImagenUrl());
+            }
+            if (producto.getDescripcion() != null) {
+                existingProducto.setDescripcion(producto.getDescripcion());
+            }
+            if (producto.getStock() != null) {
+                existingProducto.setStock(producto.getStock());
+            }
+            return productoRepository.save(existingProducto);
+        }
+        return null;
+    }
+
+    public void deleteById(Long id) {
+        productoRepository.deleteById(id);
+    }
 }

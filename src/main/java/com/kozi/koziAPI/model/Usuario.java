@@ -15,15 +15,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Table(name = "usuarios")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "usuarios")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(length = 50, nullable = false)
     private String nombreUsuario;
@@ -44,4 +44,8 @@ public class Usuario {
     @ManyToOne
     @JoinColumn(name = "rol", nullable = false)
     private Rol rol;
+
+    @ManyToOne
+    @JoinColumn(name = "membresia", nullable = false)
+    private Membresia membresia;
 }

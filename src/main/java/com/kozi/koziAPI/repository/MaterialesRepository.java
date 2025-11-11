@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kozi.koziAPI.model.Materiales;
 
 @Repository
-public interface MaterialesRepository extends JpaRepository<Materiales, Integer>{
+public interface MaterialesRepository extends JpaRepository<Materiales, Long>{
     
 }
