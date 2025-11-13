@@ -18,6 +18,21 @@ public class ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
 
+    @Autowired
+    private ProductosPedidoService productosPedidoService;
+
+    @Autowired
+    private MaterialesService materialesService;
+
+    @Autowired
+    private EstilosService estilosService;
+
+    @Autowired
+    private CategoriasService categoriasService;
+
+    @Autowired
+    private ColoresService coloresService;
+
     public List<Producto> findAll() {
         return productoRepository.findAll();
     }
@@ -55,6 +70,11 @@ public class ProductoService {
     }
 
     public void deleteById(Long id) {
+        materialesService.deleteByProductoId(id);
+        estilosService.deleteByProductoId(id);
+        categoriasService.deleteByProductoId(id);
+        coloresService.deleteByProductoId(id);
+        productosPedidoService.deleteByProductoId(id);
         productoRepository.deleteById(id);
     }
 }

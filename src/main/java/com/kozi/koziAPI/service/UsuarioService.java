@@ -18,6 +18,12 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private DireccionService direccionService;
+
+    @Autowired
+    private PedidoService pedidoService;
+
     public List<Usuario> findAll() {
         return usuarioRepository.findAll();
     }
@@ -55,6 +61,26 @@ public class UsuarioService {
     }
 
     public void deleteById(Long id) {
+        direccionService.deleteByUsuarioId(id);
+        pedidoService.deleteByUsuarioId(id);
         usuarioRepository.deleteById(id);
+    }
+
+    public void deleteByMembresiaId(Long membresiaId) {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        for (Usuario usuario : usuarios) {
+            if (usuario.getMembresia() != null && usuario.getMembresia().getId().equals(membresiaId)) {
+                usuarioRepository.deleteById(usuario.getId());
+            }
+        }
+    }
+
+    public void deleteByRolId(Long rolId) {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        for (Usuario usuario : usuarios) {
+            if (usuario.getRol() != null && usuario.getRol().getId().equals(rolId)) {
+                usuarioRepository.deleteById(usuario.getId());
+            }
+        }
     }
 }

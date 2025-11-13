@@ -17,6 +17,9 @@ public class MaterialService {
     
     @Autowired
     private MaterialRepository materialRepository;
+
+    @Autowired
+    private MaterialesService materialesService;
     
     public List<Material> findAll() {
         return materialRepository.findAll();
@@ -43,6 +46,7 @@ public class MaterialService {
     }
 
     public void deleteById(Long id) {
+        materialesService.deleteByMaterialId(id);
         materialRepository.deleteById(id);
     }
 }

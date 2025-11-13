@@ -18,6 +18,9 @@ public class EstiloService {
     @Autowired
     private EstiloRepository estiloRepository;
 
+    @Autowired
+    private EstilosService estilosService;
+
     public List<Estilo> findAll() {
         return estiloRepository.findAll();
     }
@@ -43,6 +46,7 @@ public class EstiloService {
     }
 
     public void deleteById(Long id) {
+        estilosService.deleteByEstiloId(id);
         estiloRepository.deleteById(id);
     }
 }

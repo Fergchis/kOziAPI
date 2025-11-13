@@ -18,6 +18,9 @@ public class PedidoService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
+    @Autowired
+    private ProductosPedidoService productosPedidoService;
+
     public List<Pedido> findAll() {
         return pedidoRepository.findAll();
     }
@@ -46,7 +49,43 @@ public class PedidoService {
     }
 
     public void deleteById(Long id) {
+        productosPedidoService.deleteByPedidoId(id);
         pedidoRepository.deleteById(id);
     }
 
+    public void deleteByUsuarioId(Long usuarioId) {
+        List<Pedido> pedidos = pedidoRepository.findAll();
+        for (Pedido pedido : pedidos) {
+            if (pedido.getUsuario() != null && pedido.getUsuario().getId().equals(usuarioId)) {
+                pedidoRepository.deleteById(pedido.getId());
+            }
+        }
+    }
+
+    public void deleteByPagoId(Long pagoId) {
+        List<Pedido> pedidos = pedidoRepository.findAll();
+        for (Pedido pedido : pedidos) {
+            if (pedido.getPago() != null && pedido.getPago().getId().equals(pagoId)) {
+                pedidoRepository.deleteById(pedido.getId());
+            }
+        }
+    }
+
+    public void deleteByEnvioId(Long envioId) {
+        List<Pedido> pedidos = pedidoRepository.findAll();
+        for (Pedido pedido : pedidos) {
+            if (pedido.getEnvio() != null && pedido.getEnvio().getId().equals(envioId)) {
+                pedidoRepository.deleteById(pedido.getId());
+            }
+        }
+    }
+
+    public void deleteByEstadoId(Long estadoId) {
+        List<Pedido> pedidos = pedidoRepository.findAll();
+        for (Pedido pedido : pedidos) {
+            if (pedido.getEstado() != null && pedido.getEstado().getId().equals(estadoId)) {
+                pedidoRepository.deleteById(pedido.getId());
+            }
+        }
+    }
 }

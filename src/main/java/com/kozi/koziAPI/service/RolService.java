@@ -18,6 +18,9 @@ public class RolService {
     @Autowired
     private RolRepository rolRepository;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     public List<Rol> findAll() {
         return rolRepository.findAll();
     }
@@ -43,6 +46,7 @@ public class RolService {
     }
 
     public void deleteById(Long id) {
+        usuarioService.deleteByRolId(id);
         rolRepository.deleteById(id);
     }
 }

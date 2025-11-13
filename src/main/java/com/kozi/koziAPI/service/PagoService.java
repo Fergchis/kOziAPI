@@ -18,6 +18,9 @@ public class PagoService {
     @Autowired
     private PagoRepository pagoRepository;
 
+    @Autowired
+    private PedidoService pedidoService;
+
     public List<Pago> findAll() {
         return pagoRepository.findAll();
     }
@@ -43,6 +46,7 @@ public class PagoService {
     }
 
     public void deleteById(Long id) {
+        pedidoService.deleteByPagoId(id);
         pagoRepository.deleteById(id);
     }
 }

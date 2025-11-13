@@ -57,4 +57,13 @@ public class DireccionService {
             }
         }
     }
+
+    public void deleteByUsuarioId(Long usuarioId) {
+        List<Direccion> direcciones = direccionRepository.findAll();
+        for (Direccion direccion : direcciones) {
+            if (direccion.getUsuario() != null && direccion.getUsuario().getId().equals(usuarioId)) {
+                direccionRepository.deleteById(direccion.getId());
+            }
+        }
+    }
 }

@@ -18,6 +18,9 @@ public class ColorService {
     @Autowired
     private ColorRepository colorRepository;
 
+    @Autowired
+    private ColoresService coloresService;
+
     public List<Color> findAll() {
         return colorRepository.findAll();
     }
@@ -43,6 +46,7 @@ public class ColorService {
     }
 
     public void deleteById(Long id) {
+        coloresService.deleteByColorId(id);
         colorRepository.deleteById(id);
     }
 }

@@ -17,6 +17,9 @@ public class RegionService {
     
     @Autowired
     private RegionRepository regionRepository;
+    
+    @Autowired
+    private CiudadService ciudadService;
 
     public List<Region> findAll() {
         return regionRepository.findAll();
@@ -43,6 +46,7 @@ public class RegionService {
     }
 
     public void deleteById(Long id) {
+        ciudadService.deleteByRegionId(id);
         regionRepository.deleteById(id);
     }
 }

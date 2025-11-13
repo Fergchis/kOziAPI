@@ -57,7 +57,5 @@ public class ComunaService {
                 comunaRepository.deleteById(comuna.getId());
             }
         }
-    }
-
-    
+    }  
 }

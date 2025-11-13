@@ -18,6 +18,9 @@ public class EnvioService {
     @Autowired
     private EnvioRepository envioRepository;
 
+    @Autowired
+    private PedidoService pedidoService;
+
     public List<Envio> findAll() {
         return envioRepository.findAll();
     }
@@ -43,6 +46,7 @@ public class EnvioService {
     }
 
     public void deleteById(Long id) {
+        pedidoService.deleteByEnvioId(id);
         envioRepository.deleteById(id);
     }
 }

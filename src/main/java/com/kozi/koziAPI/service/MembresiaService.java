@@ -18,6 +18,9 @@ public class MembresiaService {
     @Autowired
     private MembresiaRepository membresiaRepository;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     public List<Membresia> findAll() {
         return membresiaRepository.findAll();
     }
@@ -43,6 +46,7 @@ public class MembresiaService {
     }
 
     public void deleteById(Long id) {
+        usuarioService.deleteByMembresiaId(id);
         membresiaRepository.deleteById(id);
     }
 }
