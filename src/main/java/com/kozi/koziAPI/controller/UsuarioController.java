@@ -3,6 +3,7 @@ package com.kozi.koziAPI.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +47,17 @@ public class UsuarioController {
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {
         Usuario createdUsuario = usuarioService.save(usuario);
         return ResponseEntity.status(201).body(createdUsuario);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Usuario usuario ) {
+        Usuario login = usuarioService.login(usuario);
+        if (login != null) {
+            login.setContraseña(null);
+            return ResponseEntity.ok(login);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales invalidas");
+        }
     }
 
     @PutMapping("/{id}")

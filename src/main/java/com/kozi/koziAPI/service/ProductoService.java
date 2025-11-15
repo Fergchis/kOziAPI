@@ -1,10 +1,12 @@
 package com.kozi.koziAPI.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kozi.koziAPI.model.Categorias;
 import com.kozi.koziAPI.model.Producto;
 import com.kozi.koziAPI.repository.ProductoRepository;
 
@@ -40,6 +42,19 @@ public class ProductoService {
     public Producto findById(Long id) {
         Producto producto = productoRepository.findById(id).orElse(null);
         return producto;
+    }
+
+    public List<Producto> findByCategoriaId(Long categoriaId) {
+        List<Categorias> relaciones = categoriasService.findByCategoriaId(categoriaId);
+        List<Producto> productos = new ArrayList<>();
+
+        for (Categorias relacion : relaciones) {
+            if (relacion.getProducto() != null && !productos.contains(relacion.getProducto())) {
+                productos.add(relacion.getProducto());
+            }
+        }
+
+        return productos;
     }
 
     public Producto save(Producto producto) {

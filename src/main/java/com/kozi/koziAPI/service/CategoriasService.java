@@ -27,6 +27,10 @@ public class CategoriasService {
         return categorias;
     }
 
+    public List<Categorias> findByCategoriaId(Long categoriaId) {
+        return categoriasRepository.findByCategoriaId(categoriaId);
+    }
+
     public Categorias save(Categorias categorias) {
         return categoriasRepository.save(categorias);
     }
