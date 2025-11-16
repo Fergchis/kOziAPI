@@ -30,6 +30,10 @@ public class PedidoService {
         return pedido;
     }
 
+    public List<Pedido> findByUsuarioId(Long usuarioId) {
+        return pedidoRepository.findByUsuarioId(usuarioId);
+    }
+
     public Pedido save(Pedido pedido) {
         return pedidoRepository.save(pedido);
     }

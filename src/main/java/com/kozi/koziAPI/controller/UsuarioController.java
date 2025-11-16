@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kozi.koziAPI.model.Pedido;
 import com.kozi.koziAPI.model.Usuario;
+import com.kozi.koziAPI.service.PedidoService;
 import com.kozi.koziAPI.service.UsuarioService;
 
 @RestController
@@ -24,6 +26,9 @@ public class UsuarioController {
     
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private PedidoService pedidoService;
 
     @GetMapping
     public ResponseEntity<List<Usuario>> getAllUsuarios() {
@@ -41,6 +46,22 @@ public class UsuarioController {
             return ResponseEntity.notFound().build();
         } 
         return ResponseEntity.ok(usuario);
+    }
+
+    @GetMapping("/{usuarioId}/pedidos")
+    public ResponseEntity<List<Pedido>> getHistorialDeCompraDeUsuario(@PathVariable Long usuarioId) {
+        
+        Usuario usuario = usuarioService.findById(usuarioId);
+        if (usuario == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        List<Pedido> pedidos = pedidoService.findByUsuarioId(usuarioId);
+        if (pedidos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(pedidos);
     }
 
     @PostMapping
