@@ -51,6 +51,15 @@ public class ProductoController {
         return ResponseEntity.ok(productos);
     }
 
+    @GetMapping("/ultimos6")
+    public ResponseEntity<List<Producto>> getUltimos6Productos() {
+        List<Producto> productos = productoService.findUltimos6Productos();
+        if (productos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(productos);
+    }
+
     @PostMapping
     public ResponseEntity<Producto> createProducto(@RequestBody Producto producto) {
         Producto createdProducto = productoService.save(producto);

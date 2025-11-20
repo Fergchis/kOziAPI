@@ -33,6 +33,6 @@ public class Producto {
     @Column(length = 100, nullable = false)
     private String descripcion;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Integer stock;
 }

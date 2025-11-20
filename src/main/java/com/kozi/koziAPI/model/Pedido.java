@@ -25,7 +25,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime fechaCreacion;
     
     @Column(nullable = false, length = 7)

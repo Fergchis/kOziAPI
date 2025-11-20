@@ -57,6 +57,10 @@ public class ProductoService {
         return productos;
     }
 
+    public List<Producto> findUltimos6Productos() {
+        return productoRepository.findTop6ByOrderByIdDesc();
+    }
+
     public Producto save(Producto producto) {
         return productoRepository.save(producto);
     }

@@ -26,7 +26,7 @@ public class Direccion {
     @Column(nullable = false, length = 50)
     private String nombreCalle;
 
-    @Column(nullable = false, length = 5)
+    @Column(nullable = true, length = 10)
     private Integer numeroCalle;
 
     @ManyToOne
