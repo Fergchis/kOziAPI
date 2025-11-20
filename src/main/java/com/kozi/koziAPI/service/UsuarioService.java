@@ -64,9 +64,6 @@ public class UsuarioService {
                 String contraseñaEncriptada = passwordEncoder.encode(usuario.getContraseña());
                 existingUsuario.setContraseña(contraseñaEncriptada);
             }
-            if (usuario.getTipoMembresia() != null) {
-                existingUsuario.setTipoMembresia(usuario.getTipoMembresia());
-            }
             if (usuario.getActivo() != null) { 
                 existingUsuario.setActivo(usuario.getActivo());
             }

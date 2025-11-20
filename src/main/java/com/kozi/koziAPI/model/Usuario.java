@@ -35,11 +35,8 @@ public class Usuario {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String contraseña;
 
-    @Column(length = 20, nullable = true)
-    private String tipoMembresia; // STANDARD o VIP
-
     @Column(nullable = true)
-    private String fotoPerfil; // STANDARD o VIP
+    private String fotoPerfil;
 
     @Column(nullable = false)
     private Boolean activo = true;
