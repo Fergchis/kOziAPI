@@ -22,5 +22,5 @@ public class Envio {
     private Long id;
 
     @Column(length = 20, nullable = false)
-    private String metodoEnvio; //chilexpress, correoschile, idkmen
+    private String metodoEnvio; //chilexpress, correoschile, FedEx
 }

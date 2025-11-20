@@ -74,7 +74,7 @@ public class UsuarioController {
     public ResponseEntity<?> login(@RequestBody Usuario usuario ) {
         Usuario login = usuarioService.login(usuario);
         if (login != null) {
-            login.setContraseña(null);
+            login.setPassword(null);
             return ResponseEntity.ok(login);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales invalidas");

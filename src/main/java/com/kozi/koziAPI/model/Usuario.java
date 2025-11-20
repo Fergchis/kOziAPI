@@ -33,7 +33,7 @@ public class Usuario {
 
     @Column(nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String contraseña;
+    private String password;
 
     @Column(nullable = true)
     private String fotoPerfil;

@@ -39,15 +39,15 @@ public class UsuarioService {
 
     public Usuario login(Usuario usuario) {
         Usuario foundUsuario = usuarioRepository.findByEmail(usuario.getEmail());
-        if (foundUsuario != null && passwordEncoder.matches(usuario.getContraseña(), foundUsuario.getContraseña())) {
+        if (foundUsuario != null && passwordEncoder.matches(usuario.getPassword(), foundUsuario.getPassword())) {
             return foundUsuario;
         }
         return null;
     }
 
     public Usuario save(Usuario usuario) {
-        String contraseñaEncriptada = passwordEncoder.encode(usuario.getContraseña());
-        usuario.setContraseña(contraseñaEncriptada);
+        String encryptedPassword = passwordEncoder.encode(usuario.getPassword());
+        usuario.setPassword(encryptedPassword);
         return usuarioRepository.save(usuario);
     }
 
@@ -60,9 +60,9 @@ public class UsuarioService {
             if (usuario.getEmail() != null) {
                 existingUsuario.setEmail(usuario.getEmail());
             }
-            if (usuario.getContraseña() != null) {
-                String contraseñaEncriptada = passwordEncoder.encode(usuario.getContraseña());
-                existingUsuario.setContraseña(contraseñaEncriptada);
+            if (usuario.getPassword() != null) {
+                String encryptedPassword = passwordEncoder.encode(usuario.getPassword());
+                existingUsuario.setPassword(encryptedPassword);
             }
             if (usuario.getActivo() != null) { 
                 existingUsuario.setActivo(usuario.getActivo());
