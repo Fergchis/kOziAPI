@@ -70,6 +70,13 @@ public class UsuarioService {
             if (usuario.getFotoPerfil() != null) {
                 existingUsuario.setFotoPerfil(usuario.getFotoPerfil());
             }
+             if (usuario.getRol() != null) {
+            existingUsuario.setRol(usuario.getRol());
+            }
+
+            if (usuario.getMembresia() != null) {
+                existingUsuario.setMembresia(usuario.getMembresia());
+            }
             return usuarioRepository.save(existingUsuario);
         }
         return null;
