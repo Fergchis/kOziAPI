@@ -38,7 +38,7 @@ public class ProductosPedidoService {
     public void deleteByPedidoId(Long pedidoId) {
         List<ProductosPedido> productosPedidos = productosPedidoRepository.findAll();
         for (ProductosPedido productosPedido : productosPedidos) {
-            if (productosPedido.getPedido() != null && productosPedido.getProducto().getId().equals(pedidoId)){
+            if (productosPedido.getPedido() != null && productosPedido.getPedido().getId().equals(pedidoId)){
                 productosPedidoRepository.deleteById(productosPedido.getId());
             }
         }

@@ -47,6 +47,15 @@ public class PedidoService {
             if (pedido.getTotal() != null) {
                 existingPedido.setTotal(pedido.getTotal());
             }
+            if (pedido.getEstado() != null) {
+                existingPedido.setEstado(pedido.getEstado());
+            }
+            if (pedido.getEnvio() != null) {
+                existingPedido.setEnvio(pedido.getEnvio());
+            }
+            if (pedido.getPago() != null) {
+                existingPedido.setPago(pedido.getPago());
+            }
             return pedidoRepository.save(existingPedido);
         }
         return null;
